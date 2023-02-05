@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src ="./scripts/index.js" defer></script>
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="логотип">
+    </header>
+    <main>
+      <section class="profile">
+        <img class="profile__avatar" src="./images/avatar.png" alt="аватар">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button
+            aria-label="Редактировать профиль"
+            class="profile__edit-button"
+            type="button"
+          ></button>
+          <p class="profile__about">Исследователь океана</p>
+        </div>
+        <button
+          aria-label="Добавить карточку места"
+          class="profile__add-button"
+          type="button"
+        ></button>
+      </section>
+      <section class="elements">
+        <div class="card">
+          <img class="card__image" src="./images/suzdal.jpg" alt="Cуздаль">
+          <div class="card__text">
+            <h2 class="card__title">Суздаль</h2>
+            <button aria-label="Лайк" class="card__icon" type="button"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            class="card__image"
+            src="./images/pereslavl_zalesskiy.jpg"
+            alt="Переславль-Залесский">
+          <div class="card__text">
+            <h2 class="card__title">Переславль-Залесский</h2>
+            <button aria-label="Лайк" class="card__icon" type="button"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card__image" src="./images/moscow.jpg" alt="Москва">
+          <div class="card__text">
+            <h2 class="card__title">Москва</h2>
+            <button aria-label="Лайк" class="card__icon" type="button"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card__image" src="./images/vladimir.jpg" alt="Владимир">
+          <div class="card__text">
+            <h2 class="card__title">Владимир</h2>
+            <button aria-label="Лайк" class="card__icon" type="button"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            class="card__image"
+            src="./images/sergiev_pasad.jpg"
+            alt="Сергиев Посад">
+          <div class="card__text">
+            <h2 class="card__title">Сергиев Посад</h2>
+            <button aria-label="Лайк" class="card__icon" type="button"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card__image" src="./images/kostroma.jpg" alt="Кострома">
+          <div class="card__text">
+            <h2 class="card__title">Кострома</h2>
+            <button aria-label="Лайк" class="card__icon" type="button"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2023. Oleg Noskov</p>
+    </footer>
+
+    <div class="popup popup-profile" id="popup-edit">
+      <div class="popup__container">
+        <button
+          aria-label="Закрыть"
+          class="popup__button-close popup-profile__button-close"
+          type="button"
+        ></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form
+          class="popup__form popup-profile__form"
+          name="profile-edit"
+          id="profile-edit"
+          novalidate=""
+        >
+          <input
+            type="text"
+            class="popup__input popup__input_type_name"
+            placeholder="Ваше имя"
+            id="profile-name"
+            name="profile-name"
+            minlength="2"
+            maxlength="40"
+            required=""
+          />
+          <input
+            type="text"
+            class="popup__input popup__input_type_about"
+            placeholder="Род занятий"
+            id="profile-about"
+            name="profile-about"
+            minlength="2"
+            maxlength="200"
+            required=""
+          />
+          <button class="popup__button" type="submit" id="button-profile">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
