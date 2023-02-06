@@ -8,13 +8,13 @@ let profileName = document.querySelector(".profile__name");
 let profileAbout = document.querySelector(".profile__about");
 
 function open() {
-  openForm.classList.toggle("popup__opened");
+  openForm.classList.add("popup_opened");
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
 }
 
 function close() {
-  openForm.classList.toggle("popup__opened");
+  openForm.classList.remove("popup_opened");
 }
 buttonOpen.addEventListener("click", open);
 buttonClose.addEventListener("click", close);
