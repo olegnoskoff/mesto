@@ -16,11 +16,6 @@
   }
 }
 
-@media screen and (max-width: 740px) {
-  .card__title {
-    max-width: 120px;
-  }
-}
 
 @media screen and (max-width: 650px) {
   .card__title {
@@ -28,11 +23,6 @@
   }
 }
 
-@media screen and (max-width: 540px) {
-  .card__title {
-    max-width: 160px;
-  }
-}
 
 @media screen and (max-width: 500px) {
   .card__title {

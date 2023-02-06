@@ -8,7 +8,7 @@
   border: 0;
   position: absolute;
   top: -40px;
-  left: 438px;
+  right: -438px;
 }
 
 .popup__button-close:hover {
@@ -20,7 +20,7 @@
   .popup__button-close {
     width: 20px;
     height: 20px;
-    left: 262px;
+    right: 0;
     top: -36px;
   }
 }

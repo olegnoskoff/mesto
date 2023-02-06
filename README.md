@@ -1,4 +1,4 @@
-# Mesto ([mesto](https://olegnoskoff.github.io/russian-travel/))
+# Mesto ([mesto](https://olegnoskoff.github.io/mesto/))
 
 *Финальный проект 4-го спринта онлйн-обучения Яндекс.Практикума*
 
@@ -33,4 +33,4 @@
 * **Код-ревью** за профессионализм и терпение.
 
 ## Ссылка на проект
-([MESTO PAGE](https://olegnoskoff.github.io/russian-travel/))
+([MESTO PAGE](https://olegnoskoff.github.io/mesto/))

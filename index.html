@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src ="./scripts/index.js" defer></script>
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
   </head>
@@ -84,16 +83,16 @@
       <p class="footer__copyright">&copy; 2023. Oleg Noskov</p>
     </footer>
 
-    <div class="popup popup-profile" id="popup-edit">
+    <div class="popup" id="popup-edit">
       <div class="popup__container">
         <button
           aria-label="Закрыть"
-          class="popup__button-close popup-profile__button-close"
+          class="popup__button-close"
           type="button"
         ></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form
-          class="popup__form popup-profile__form"
+          class="popup__form"
           name="profile-edit"
           id="profile-edit"
           novalidate=""
@@ -124,5 +123,6 @@
         </form>
       </div>
     </div>
+    <script src ="./scripts/index.js" defer></script>
   </body>
 </html>
