@@ -17,3 +17,7 @@
     max-width: 238px;
   }
 }
+
+input {
+  padding: 0;
+}
