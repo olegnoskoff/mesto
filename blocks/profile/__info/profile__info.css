@@ -4,10 +4,10 @@
   grid-template-areas: "name" "edit-button" "about about";
   justify-items: flex-start;
   align-items: center;
-  margin-right: 15px;
   column-gap: 18px;
   row-gap: 16px;
 }
+
 
 @media screen and (max-width: 615px) {
   .profile__info {

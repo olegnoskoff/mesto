@@ -16,10 +16,9 @@
   }
 }
 
-
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 780px) {
   .card__title {
-    max-width: 180px;
+    max-width: 125px;
   }
 }
 
