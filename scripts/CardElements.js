@@ -64,35 +64,34 @@ buttonCloseAdd.addEventListener("click", close);
 
 function newCardCreate(evt) {
   evt.preventDefault();
-  createCard({name: cityInput.value, link: linkInput.value}, true);
+  createCard({ name: cityInput.value, link: linkInput.value }, true);
 
   close();
 }
 
 formElementAdd.addEventListener("submit", newCardCreate);
 
-const imageCard = document.querySelector('#imageCard');
+const imageCard = document.querySelector("#imageCard");
 
 function clickHandler(event) {
   if (event.target.classList.contains("card__icon"))
-    event.target.classList.toggle('card__icon_active');
-  else if (event.target.classList.contains('card__delete')) {
-    event.target.closest('.card').remove();
-  }
-  else if (event.target.classList.contains('card__image')) {
-    imageCard.classList.add('popup_opened');
+    event.target.classList.toggle("card__icon_active");
+  else if (event.target.classList.contains("card__delete")) {
+    event.target.closest(".card").remove();
+  } else if (event.target.classList.contains("card__image")) {
+    imageCard.classList.add("popup_opened");
 
-    let city = event.target.closest('.card').querySelector('.card__title').innerText;
+    let city = event.target
+      .closest(".card")
+      .querySelector(".card__title").innerText;
     let imgSrc = event.target.src;
 
-    imageCard.querySelector('#nameImg').innerText = city;
-    imageCard.querySelector('.popupimage__image').alt = city;
-    imageCard.querySelector('.popupimage__image').src = imgSrc;
- }
-  else if (event.target.classList.contains('popupimage__button-close')) {
-    imageCard.classList.remove('popup_opened');
- }
-
+    imageCard.querySelector("#nameImg").innerText = city;
+    imageCard.querySelector(".popupimage__image").alt = city;
+    imageCard.querySelector(".popupimage__image").src = imgSrc;
+  } else if (event.target.classList.contains("popupimage__button-close")) {
+    imageCard.classList.remove("popup_opened");
+  }
 }
 
 document.addEventListener("click", clickHandler);
