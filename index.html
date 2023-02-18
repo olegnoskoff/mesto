@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="логотип">
+      <img class="header__logo" src="./images/logo.svg" alt="логотип" />
     </header>
     <main>
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.png" alt="аватар">
+        <img class="profile__avatar" src="./images/avatar.png" alt="аватар" />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button
@@ -28,57 +28,10 @@
           type="button"
         ></button>
       </section>
-      <section class="elements">
-        <div class="card">
-          <img class="card__image" src="./images/suzdal.jpg" alt="Cуздаль">
-          <div class="card__text">
-            <h2 class="card__title">Суздаль</h2>
-            <button aria-label="Лайк" class="card__icon" type="button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            class="card__image"
-            src="./images/pereslavl_zalesskiy.jpg"
-            alt="Переславль-Залесский">
-          <div class="card__text">
-            <h2 class="card__title">Переславль-Залесский</h2>
-            <button aria-label="Лайк" class="card__icon" type="button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" src="./images/moscow.jpg" alt="Москва">
-          <div class="card__text">
-            <h2 class="card__title">Москва</h2>
-            <button aria-label="Лайк" class="card__icon" type="button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" src="./images/vladimir.jpg" alt="Владимир">
-          <div class="card__text">
-            <h2 class="card__title">Владимир</h2>
-            <button aria-label="Лайк" class="card__icon" type="button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            class="card__image"
-            src="./images/sergiev_pasad.jpg"
-            alt="Сергиев Посад">
-          <div class="card__text">
-            <h2 class="card__title">Сергиев Посад</h2>
-            <button aria-label="Лайк" class="card__icon" type="button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" src="./images/kostroma.jpg" alt="Кострома">
-          <div class="card__text">
-            <h2 class="card__title">Кострома</h2>
-            <button aria-label="Лайк" class="card__icon" type="button"></button>
-          </div>
-        </div>
-      </section>
+
+      <section class="elements"></section>
     </main>
+
     <footer class="footer">
       <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
@@ -123,6 +76,78 @@
         </form>
       </div>
     </div>
-    <script src ="./scripts/index.js" defer></script>
+
+
+
+
+
+
+
+    <div class="popup" id="popup-add">
+      <div class="popup__container">
+        <button
+          aria-label="Закрыть"
+          class="popup__button-close"
+          type="button"
+        ></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form
+          class="popup__form"
+          name="elements-add"
+          id="card-block"
+          novalidate=""
+        >
+          <input
+            type="text"
+            class="popup__input popup__input_type_city"
+            placeholder="Название"
+            id="card-name"
+            name="card-name"
+            minlength="2"
+            maxlength="30"
+            required=""
+          />
+          <input
+            type="url"
+            class="popup__input popup__input_type_link"
+            placeholder="Ссылка на картинку"
+            id="card-link"
+            name="card-link"
+            required
+          />
+          <button class="popup__button" type="submit" id="button-profile">
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="popup popupimage" id="imageCard">
+      <div class="popupimage__container">
+        <button aria-label="Закрыть" class="popupimage__button-close" type="button"></button>
+        <img class="popupimage__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="Картинка 1">
+        <div class="popupimage__title" id="nameImg">Заголовок</div>
+      </div>
+    </div>
+
+
+    <template id="template">
+      <div class="card">
+        <img class="card__image" src="./images/suzdal.jpg" alt="Cуздаль" />
+        <button
+          aria-label="Удалить"
+          class="card__delete"
+          type="button"
+        ></button>
+        <div class="card__text">
+          <h2 class="card__title">Суздаль</h2>
+          <button aria-label="Лайк" class="card__icon" type="button"></button>
+        </div>
+      </div>
+    </template>
+
+    <script src="./scripts/popupedit.js" defer></script>
+    <script src="./scripts/CardElements.js" defer></script>
   </body>
 </html>
