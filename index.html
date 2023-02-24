@@ -60,8 +60,8 @@
             name="profile-name"
             minlength="2"
             maxlength="40"
-            required=""
-          />
+            required="">
+            <span class="popup__error popup__error_visible" id="profile-name-error"></span>
           <input
             type="text"
             class="popup__input popup__input_type_about"
@@ -70,17 +70,14 @@
             name="profile-about"
             minlength="2"
             maxlength="200"
-            required=""
-          />
+            required="">
+            <span class="popup__error popup__error_visible" id="profile-about-error"></span>
           <button class="popup__button" type="submit" id="button-profile">
             Сохранить
           </button>
         </form>
       </div>
     </div>
-
-
-
 
 
 
@@ -107,17 +104,17 @@
             name="card-name"
             minlength="2"
             maxlength="30"
-            required=""
-          />
+            required="">
+            <span class="popup__error popup__error_visible" id="card-name-error"></span>
           <input
             type="url"
             class="popup__input popup__input_type_link"
             placeholder="Ссылка на картинку"
             id="card-link"
             name="card-link"
-            required
-          />
-          <button class="popup__button" type="submit" id="button-add">
+            required>
+            <span class="popup__error popup__error_visible" id="card-link-error"></span>
+          <button class="popup__button popup__button_disabled" type="submit" id="button-add">
             Создать
           </button>
         </form>
@@ -149,6 +146,7 @@
       </div>
     </template>
 
-    <script src="./scripts/Index.js" defer></script>
+    <script type ="module" src="./scripts/index.js" defer></script>
+    <script type ="module" src ="./scripts/validate.js" defer></script>
   </body>
 </html>
