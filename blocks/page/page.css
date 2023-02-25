@@ -19,3 +19,8 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .page {
+    margin: 0;
+  }
+}

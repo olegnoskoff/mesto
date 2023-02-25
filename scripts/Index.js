@@ -1,4 +1,4 @@
-import { enableValidation } from './validate.js';
+import { enableValidation } from "./validate.js";
 
 const initialCards = [
   {
@@ -27,13 +27,13 @@ const initialCards = [
   },
 ];
 
-const closeButtons = document.querySelectorAll(".popup__button-close");
-
 const cardPopup = document.querySelector("#imageCard");
 const cardPopupCity = cardPopup.querySelector("#nameImg");
 const cardPopupImg = cardPopup.querySelector(".popupimage__image");
 
-const cardTemplate = document.querySelector("#template").content.querySelector(".card");
+const cardTemplate = document
+  .querySelector("#template")
+  .content.querySelector(".card");
 const cardsContainer = document.querySelector(".elements");
 
 const profileName = document.querySelector(".profile__name");
@@ -42,8 +42,12 @@ const profileAbout = document.querySelector(".profile__about");
 const profilePopup = document.querySelector("#popup-edit");
 const profileEditBtn = document.querySelector(".profile__edit-button");
 const profilePopupForm = profilePopup.querySelector(".popup__form");
-const profileNameInput = profilePopupForm.querySelector(".popup__input_type_name");
-const profileAboutInput = profilePopupForm.querySelector(".popup__input_type_about");
+const profileNameInput = profilePopupForm.querySelector(
+  ".popup__input_type_name"
+);
+const profileAboutInput = profilePopupForm.querySelector(
+  ".popup__input_type_about"
+);
 
 const cardAddBtn = document.querySelector(".profile__add-button");
 
@@ -52,36 +56,34 @@ const cardAddPopupForm = cardAddPopup.querySelector(".popup__form");
 const cityInput = cardAddPopup.querySelector(".popup__input_type_city");
 const linkInput = cardAddPopup.querySelector(".popup__input_type_link");
 
-const popups = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll(".popup");
 
 popups.forEach((popup) => {
-  popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close') ) {
-      closePopup(popup)
+  popup.addEventListener("mousedown", (evt) => {
+    if (
+      evt.target.classList.contains("popup_opened") ||
+      evt.target.classList.contains("popup__button-close")
+    ) {
+      closePopup(popup);
     }
-  })
+  });
 });
 
 const closeByEscape = (evt) => {
-  if (evt.key === 'Escape' && document.querySelector('.popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'))
-  };
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector(".popup_opened"));
+  }
 };
 
 function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEscape);
+  popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closeByEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener('keydown', closeByEscape);
-  
+  document.removeEventListener("keydown", closeByEscape);
 }
-
-// closeButtons.forEach((button) => {
-//   button.addEventListener('click', () => closePopup(button.closest(".popup")));
-// });
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -92,7 +94,7 @@ function handleProfileFormSubmit(evt) {
 }
 
 profileEditBtn.addEventListener("click", () => {
-  openPopup(profilePopup)
+  openPopup(profilePopup);
   profileNameInput.value = profileName.textContent;
   profileAboutInput.value = profileAbout.textContent;
 });
@@ -100,53 +102,44 @@ profilePopupForm.addEventListener("submit", handleProfileFormSubmit);
 
 function createCard(item) {
   const card = cardTemplate.cloneNode(true);
-  card.querySelector(".card__image").src = item.link;
-  card.querySelector(".card__image").alt = item.name;
+  const image = card.querySelector(".card__image");
+  image.src = item.link;
+  image.alt = item.name;
   card.querySelector(".card__title").textContent = item.name;
   const like = card.querySelector(".card__icon");
   like.addEventListener("click", () =>
-    like.classList.toggle("card__icon_active"));
-  card.querySelector(".card__delete").addEventListener("click", () =>
-    card.remove());
-  card.querySelector(".card__image").addEventListener("click", () =>
-  {
+    like.classList.toggle("card__icon_active")
+  );
+  card
+    .querySelector(".card__delete")
+    .addEventListener("click", () => card.remove());
+  image.addEventListener("click", () => {
     openPopup(cardPopup);
-    const city = target
-      .closest(".card")
-      .querySelector(".card__title").innerText;
-    cardPopupCity.innerText = city;
-    cardPopupImg.alt = city;
-    cardPopupImg.src = target.src;
+    cardPopupCity.innerText = item.name;
+    cardPopupImg.alt = item.name;
+    cardPopupImg.src = item.link;
   });
-  return(card);
+  return card;
 }
 
 initialCards.forEach((item) => cardsContainer.append(createCard(item)));
 
 cardAddPopupForm.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      cardsContainer.prepend(
-          createCard({name: cityInput.value, link: linkInput.value }, true));
-      evt.target.reset();
-      closePopup(cardAddPopup);
-    }
-);
+  evt.preventDefault();
+  cardsContainer.prepend(
+    createCard({ name: cityInput.value, link: linkInput.value }, true)
+  );
+  evt.target.reset();
+  closePopup(cardAddPopup);
+});
 
 cardAddBtn.addEventListener("click", () => openPopup(cardAddPopup));
 
 enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
 });
-
-popups.forEach((popup) => {
-  popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close') ) {
-      closePopup(popup)
-    }
-  })
-})
