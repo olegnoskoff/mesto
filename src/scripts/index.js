@@ -1,5 +1,10 @@
+import "../pages/index.css";
+import Section from "./Section.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 
 const settings = {
   formSelector: ".popup__form",
@@ -37,6 +42,8 @@ const initialCards = [
   },
 ];
 
+const UserInfoController = new UserInfo(".profile__name", ".profile__about");
+
 const cardPopup = document.querySelector("#imageCard");
 const cardPopupCity = cardPopup.querySelector(".popupimage__title");
 const cardPopupImg = cardPopup.querySelector(".popupimage__image");
@@ -45,9 +52,6 @@ const cardTemplate = document
   .querySelector("#template")
   .content.querySelector(".card");
 const cardsContainer = document.querySelector(".elements");
-
-const profileName = document.querySelector(".profile__name");
-const profileAbout = document.querySelector(".profile__about");
 
 const profilePopup = document.querySelector("#popup-edit");
 const profileEditBtn = document.querySelector(".profile__edit-button");
@@ -74,78 +78,50 @@ const validatorEdit = new FormValidator(settings, cardAddPopup);
 validatorProfile.enableValidation();
 validatorEdit.enableValidation();
 
-popups.forEach((popup) => {
-  popup.addEventListener("mousedown", (evt) => {
-    if (
-      evt.target.classList.contains("popup_opened") ||
-      evt.target.classList.contains("popup__button-close")
-    ) {
-      closePopup(popup);
-    }
-  });
+//вызывается при клике на карточку
+function handleCardClick(card) {
+  let popupWithImage = new PopupWithImage(".popupimage");
+  popupWithImage.open(card.name, card.link);
+}
+
+let cards = [];
+const cardsContainerSelector = ".elements";
+const cardRender = (card) => {
+  return card.render();
+};
+initialCards.forEach((item) => {
+  cards.push(new Card(item.name, item.link, "#template", handleCardClick));
 });
 
-const closeByEscape = (evt) => {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".popup_opened"));
+const cardsSection = new Section(
+  { items: cards, render: cardRender },
+  cardsContainerSelector
+);
+cardsSection.renderItems();
+
+//Add form
+const submitAddCallback = (data) => {
+  if (data.card_name && data.card_link) {
+    //извеняюсь, что так пофиксил. Не могу отловить ошибку по добавлении карточек. Был бы признателен, если вы подскажете.
+    cardsSection.addItem(
+      new Card(data.card_name, data.card_link, "#template", handleCardClick)
+    );
   }
 };
 
-const createCard = (name, link) => {
-  const card = new Card(name, link, "#template", openedCard);
-  const cardElement = card.generateCard();
-  return cardElement;
+// вызывается при нажатии на кнопку
+function handleAddClick() {
+  const popupWithForm = new PopupWithForm("#popup-add", submitAddCallback);
+  popupWithForm.open();
+}
+
+const submitProfileCallback = (data) => {
+  UserInfoController.setUserInfo(data["profile-name"], data["profile-about"]);
 };
-
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closeByEscape);
+function handleProfileEdit() {
+  const popupWithForm = new PopupWithForm("#popup-edit", submitProfileCallback);
+  popupWithForm.open();
 }
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closeByEscape);
-}
-
-function openPopupEdit() {
-  openPopup(cardAddPopup);
-  cardAddPopupForm.reset();
-  validatorEdit.hidePopupErrors();
-}
-
-function openPopupProfile() {
-  profileNameInput.value = profileName.textContent;
-  profileAboutInput.value = profileAbout.textContent;
-  openPopup(profilePopup);
-  validatorProfile.hidePopupErrors();
-}
-
-function openedCard(name, link) {
-  cardPopupImg.src = link;
-  cardPopupCity.alt = name;
-  cardPopupCity.textContent = name;
-  openPopup(cardPopup);
-}
-
-function submitFormProfile(evt) {
-  evt.preventDefault();
-  profileName.textContent = profileNameInput.value;
-  profileAbout.textContent = profileAboutInput.value;
-  evt.target.reset();
-  closePopup(profilePopup);
-}
-
-const handleAddBtn = (evt) => {
-  evt.preventDefault();
-  cardsContainer.prepend(createCard(cityInput.value, linkInput.value));
-  closePopup(cardAddPopup);
-};
-
-initialCards.forEach((item) => {
-  cardsContainer.append(createCard(item.name, item.link));
-});
-
-cardAddPopupForm.addEventListener("submit", handleAddBtn);
-profileEditBtn.addEventListener("click", openPopupProfile);
-cardAddBtn.addEventListener("click", openPopupEdit);
-profilePopup.addEventListener("submit", submitFormProfile);
+profileEditBtn.addEventListener("click", handleProfileEdit);
+cardAddBtn.addEventListener("click", handleAddClick);

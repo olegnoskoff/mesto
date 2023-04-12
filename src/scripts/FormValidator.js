@@ -22,6 +22,7 @@ class FormValidator {
     this._toggleButtonState();
   };
 
+  //отображаем сообщение об ошибке
   _showError = (inputElement, errorMessage) => {
     const formError = this._formElement.querySelector(
       `#${inputElement.id}-error`
@@ -31,6 +32,7 @@ class FormValidator {
     formError.classList.add(this._errorClass);
   };
 
+  //скрываем сообщение об ошибке
   _hideError = (inputElement) => {
     const formError = this._formElement.querySelector(
       `#${inputElement.id}-error`
@@ -40,11 +42,13 @@ class FormValidator {
     formError.textContent = "";
   };
 
+  //деактивируем кнопку отправки формы
   _deactivateButton = () => {
     this._buttonElement.setAttribute("disabled", true);
     this._buttonElement.classList.add(this._inactiveButtonClass);
   };
 
+  //активируем кнопку отправки формы
   _activateButton = () => {
     this._buttonElement.removeAttribute("disabled");
     this._buttonElement.classList.remove(this._inactiveButtonClass);
@@ -53,7 +57,6 @@ class FormValidator {
   //работа кнопки sumbit
   _toggleButtonState = () => {
     if (this._hasInvalidInput()) {
-      // если
       this._deactivateButton();
     } else {
       this._activateButton();
