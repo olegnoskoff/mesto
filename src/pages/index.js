@@ -5,59 +5,9 @@ import { FormValidator } from "../components/FormValidator.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-// import initialCards from "../utils/constants.js";
+import { initialCards } from "../utils/constants.js";
+import { settings } from "../utils/constants.js";
 
-const settings = {
-  formSelector: ".popup__form",
-
-  inputSelector: ".popup__input",
-
-  popupButtonSelector: ".popup__button",
-
-  inactiveButtonClass: "popup__button_disabled",
-
-  inputErrorClass: "popup__input_type_error",
-
-  errorClass: "popup__error_visible",
-};
-
-const initialCards = [
-  {
-    name: "Архыз",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-
-  {
-    name: "Челябинская область",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-
-  {
-    name: "Иваново",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-
-  {
-    name: "Камчатка",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-
-  {
-    name: "Холмогорский район",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-
-  {
-    name: "Байкал",
-
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 
 const userInfoController = new UserInfo(".profile__name", ".profile__about");
 const cardPopup = document.querySelector("#imageCard");
@@ -95,17 +45,18 @@ let cards = [];
 
 const cardsContainerSelector = ".elements";
 
-const cardRender = (card) => {
+const renderCard = (item)=> {
+  const card = new Card(item.name, item.link, "#template", handleCardClick);
   return card.render();
-};
+}
 
 initialCards.forEach((item) => {
   cards.push(new Card(item.name, item.link, "#template", handleCardClick));
 });
 
 const cardsSection = new Section(
-  { items: cards, render: cardRender },
-
+  { items: initialCards, 
+    renderer: renderCard },
   cardsContainerSelector
 );
 
