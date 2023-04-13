@@ -50,7 +50,6 @@ validatorEdit.enableValidation();
 
 //вызывается при клике на карточку
 function handleCardClick(name, link) {
-  let popupWithImage = new PopupWithImage(".popupimage");
   popupWithImage.open(name, link);
 }
 
@@ -58,11 +57,11 @@ let cards = [];
 const cardsContainerSelector = ".elements";
 const renderCard = (name, link)=> {
   const card = new Card(renderCard, name, link, "#template", handleCardClick);
-  return card.render();
-}
+  return card.generateCard();
+};
 
 initialCards.forEach((item) => {
-  cards.push(new Card(item.name, item.link, "#template", handleCardClick));
+  cards.push(renderCard(item.name, item.link));
 });
 
 const cardsSection = new Section(
@@ -85,6 +84,8 @@ const submitAddCallback = (data) => {
     );
   }
 };
+
+const popupWithImage = new PopupWithImage('.popupimage');
 
 // вызывается при нажатии на кнопку
 function handleAddClick() {
