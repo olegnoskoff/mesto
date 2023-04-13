@@ -11,7 +11,6 @@ export default class Section {
       this.addItem(item);
     });
   }
-
   //создает HTML элемент, соответствующий переданному элементу массива
   addItem(item) {
     this._container.prepend(this._render(item)); //добавляем созданный элемент в начало
