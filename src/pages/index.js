@@ -47,7 +47,6 @@ const renderCard = (item) => {
   return card.render();
 };
 
-
 const cardsSection = new Section(
   { items: initialCards, renderer: renderCard },
   cardsContainerSelector
@@ -56,22 +55,14 @@ const cardsSection = new Section(
 cardsSection.renderItems();
 
 //Add form
-
 const submitAddCallback = (data) => {
-  if (data.card_name && data.card_link) {
-    //извеняюсь, что так пофиксил. Не могу отловить ошибку по добавлении карточек. Был бы признателен, если вы подскажете.
-
-    cardsSection.addItem(
-      new Card(data.card_name, data.card_link, "#template", handleCardClick)
-    );
-  }
+  cardsSection.addItem(renderCard(data, "#template", handleCardClick));
 };
 
 // вызывается при нажатии на кнопку
+const popupWithForm = new PopupWithForm("#popup-add", submitAddCallback);
 
 function handleAddClick() {
-  const popupWithForm = new PopupWithForm("#popup-add", submitAddCallback);
-
   popupWithForm.open();
 }
 
@@ -79,12 +70,11 @@ const submitProfileCallback = (data) => {
   userInfoController.setUserInfo(data["profile-name"], data["profile-about"]);
 };
 
-function handleProfileEdit() {
-  const popupWithForm = new PopupWithForm("#popup-edit", submitProfileCallback);
+const popupWithEdit = new PopupWithForm("#popup-edit", submitProfileCallback);
 
-  popupWithForm.open();
+function handleProfileEdit() {
+  popupWithEdit.open();
 }
 
 profileEditBtn.addEventListener("click", handleProfileEdit);
-
 cardAddBtn.addEventListener("click", handleAddClick);
