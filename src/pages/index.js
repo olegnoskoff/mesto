@@ -8,7 +8,6 @@ import UserInfo from "../components/UserInfo.js";
 import { initialCards } from "../utils/constants.js";
 import { settings } from "../utils/constants.js";
 
-
 const userInfoController = new UserInfo(".profile__name", ".profile__about");
 const cardPopup = document.querySelector("#imageCard");
 const cardPopupCity = cardPopup.querySelector(".popupimage__title");
@@ -41,22 +40,16 @@ function handleCardClick(card) {
   popupWithImage.open(card.name, card.link);
 }
 
-let cards = [];
-
 const cardsContainerSelector = ".elements";
 
-const renderCard = (item)=> {
+const renderCard = (item) => {
   const card = new Card(item.name, item.link, "#template", handleCardClick);
   return card.render();
-}
+};
 
-initialCards.forEach((item) => {
-  cards.push(new Card(item.name, item.link, "#template", handleCardClick));
-});
 
 const cardsSection = new Section(
-  { items: initialCards, 
-    renderer: renderCard },
+  { items: initialCards, renderer: renderCard },
   cardsContainerSelector
 );
 
