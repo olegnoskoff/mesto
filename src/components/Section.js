@@ -1,7 +1,7 @@
 export default class Section {
   constructor(obj, selector) {
     this._items = obj.items;
-    this.renderer = obj.renderer;
+    this._renderer = obj.renderer;
     this._container = document.querySelector(selector); //определяем место на странице, ищем элемент в DOM дереве
   }
 
@@ -13,6 +13,6 @@ export default class Section {
   }
   //создает HTML элемент, соответствующий переданному элементу массива
   addItem(item) {
-    this._container.prepend(this.renderer(item)); //добавляем созданный элемент в начало
+    this._container.prepend(this._renderer(item)); //добавляем созданный элемент в начало
   }
 }

@@ -34,10 +34,9 @@ validatorProfile.enableValidation();
 validatorEdit.enableValidation();
 
 //вызывается при клике на карточку
-function handleCardClick(card) {
-  let popupWithImage = new PopupWithImage(".popupimage");
-
-  popupWithImage.open(card.name, card.link);
+const popupWithImage = new PopupWithImage(".popupimage");
+function handleCardClick(card) { 
+    popupWithImage.open(card.name, card.link);
 }
 
 const cardsContainerSelector = ".elements";
