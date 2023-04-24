@@ -7,6 +7,9 @@
     <title>Mesto</title>
   </head>
   <body class="page">
+
+<!-- шапка -->
+
     <header class="header">
       <img
         class="header__logo"
@@ -15,12 +18,19 @@
       />
     </header>
     <main>
+
+<!-- профиль -->
+
       <section class="profile">
-        <img
-          class="profile__avatar"
-          src="<%=require('./images/avatar.png')%>"
-          alt="аватар"
-        />
+        <div class="profile__avatar">
+          <img
+            src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg"
+            alt="Фотография пользователя"
+            class="profile__avatar-image">
+          <button class="profile__avatar-button"
+            type="button"
+            aria-label="Обновить аватар"></button>
+        </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button
@@ -37,12 +47,17 @@
         ></button>
       </section>
 
+      <!-- карточки -->
       <section class="elements"></section>
     </main>
+
+<!-- подвал -->
 
     <footer class="footer">
       <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
+
+<!-- попа редактирования профиля -->
 
     <div class="popup" id="popup-edit">
       <div class="popup__container">
@@ -91,6 +106,8 @@
         </form>
       </div>
     </div>
+
+<!-- попа добавления карточки -->
 
     <div class="popup" id="popup-add">
       <div class="popup__container">
@@ -143,6 +160,7 @@
       </div>
     </div>
 
+<!-- попап картинки -->
     <div class="popup popupimage" id="imageCard">
       <div class="popupimage__container">
         <button
@@ -159,6 +177,8 @@
       </div>
     </div>
 
+<!-- карточка -->
+
     <template id="template">
       <div class="card">
         <img class="card__image" src="./images/suzdal.jpg" alt="Cуздаль" />
@@ -174,6 +194,42 @@
       </div>
     </template>
 
-    <!-- <script type ="module" src="./scripts/index.js" defer></script> -->
+    <!-- попап аватара -->
+
+    <div class="popup popup__avatar">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form" name="avatarChangePopupForm" novalidate>
+          <label class="popup__field">
+            <input
+              type="url"
+              class="popup__input popup__input_type_link"
+              id="avatar-link-input"
+              placeholder="Ссылка на картинку"
+              name="link"
+              required>
+            <span class="popup__input-error avatar-link-input-error"></span>
+          </label>
+          <button class="popup__button popup__button_disabled" type="submit">Сохранить</button>
+        </form>
+        <button class="popup__button-close" type="button" aria-label="Закрыть окно"></button>
+      </div>
+    </div>
+
+<!-- попап удаления -->
+
+    <div class="popup popup__confirm">
+      <div class="popup__container">
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button
+            class="popup__button"
+            type="button">Да</button>
+        <button
+          class="popup__button-close"
+          type="button"
+          aria-label="Закрыть окно"></button>
+      </div>
+    </div>
+
   </body>
 </html>

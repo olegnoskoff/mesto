@@ -22,6 +22,7 @@ const profilePopupForm = profilePopup.querySelector(".popup__form");
 const profileNameInput = profilePopupForm.querySelector(
   ".popup__input_type_name"
 );
+
 const profileAboutInput = profilePopupForm.querySelector(
   ".popup__input_type_about"
 );
@@ -64,6 +65,7 @@ const popupWithForm = new PopupWithForm("#popup-add", submitAddCallback);
 function handleAddClick() {
   popupWithForm.open();
 }
+
 
 const submitProfileCallback = (data) => {
   userInfoController.setUserInfo(data["profile-name"], data["profile-about"]);

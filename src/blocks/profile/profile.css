@@ -1,8 +1,9 @@
 .profile {
+  padding: 15px 0 5px;
   display: flex;
-  flex-direction: row;
+  gap: 26px;
+  justify-content: space-between;
   align-items: center;
-  max-width: 880px;
 }
 
 @media screen and (max-width: 615px) {
