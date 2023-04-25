@@ -21,9 +21,9 @@ const profileEditBtn = document.querySelector(".profile__edit-button");
 const profilePopupForm = profilePopup.querySelector(".popup__form");
 const profileNameInput = profilePopupForm.querySelector(".popup__input_type_name");
 
-const popupAvatar = document.querySelector('#avatarBtn');
+const popupEditAvatar = document.querySelector('#avatarBtn');
 // Форма редактирования аватара пользователя
-const formAvatar = popupEditAvatar.querySelector('.popup__form');
+const formEditAvatar = popupEditAvatar.querySelector('.popup__form');
 // кнопка редактирования аватара пользователя
 const buttonAvatar = document.querySelector('.profile__avatar-button');
 // аватар пользователя
