@@ -121,7 +121,7 @@ profileEditBtn.addEventListener('click', () => {
   editProfilePopup.open();
 });
 
-const formEditAvatarValidator = new FormValidator(config, formEditAvatar);
+const formEditAvatarValidator = new FormValidator(settings, formEditAvatar);
 formEditAvatarValidator.enableValidation();
 
 const submitProfileCallback = (data) => {
