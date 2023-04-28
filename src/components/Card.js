@@ -24,7 +24,7 @@ export default class Card {
     //Создаем заполненную по данным карточку
   generateCard() {
     this._element = this._getTemplate();
-    this._likeButton = this._element.querySelector(".card__like-button");
+    this._likeButton = this._element.querySelector(".card__icon");
 
     //Заполнение содержимого карточки
     const img = this._element.querySelector(".card__image");
@@ -34,7 +34,7 @@ export default class Card {
 
     this.setLikes();
     if (this._owner._id !== this._userId) {
-      this._element.querySelector(".card__delete-button").remove();
+      this._element.querySelector(".card__delete").remove();
     }
 
     //Нажатие на карточку
@@ -46,7 +46,7 @@ export default class Card {
   //Устанавливаем слушатели событий на элементы карточки
   _setEventlisteners() {
     //Лайк 
-    this._element.querySelector(".card__like-button")
+    this._element.querySelector(".card__icon")
       .addEventListener("click", () => this._likeCard());
     //Картинка
     this._element.querySelector(".card__image")
@@ -54,8 +54,8 @@ export default class Card {
         this._handleCardClick(this._link, this._name)
       );
     //Удаляем карточку, при наличии
-    if (this._element.querySelector(".card__delete-button")) {
-      this._element.querySelector(".card__delete-button")
+    if (this._element.querySelector(".card__delete")) {
+      this._element.querySelector(".card__delete")
         .addEventListener("click", () => this._handleDelete());
     }
   }
@@ -87,8 +87,8 @@ export default class Card {
 
     //Обрабатываем массив лайков карточки
   setLikes(likes) {
-    const likeCount = this._element.querySelector(".card__like-count");
-    const likeBtn = this._element.querySelector(".card__like-button");
+    const likeCount = this._element.querySelector(".card__like-number");
+    const likeBtn = this._element.querySelector(".card__icon");
 
     if (likes) {
       this._likes = likes;
@@ -98,9 +98,9 @@ export default class Card {
     likeCount.textContent = this._likes.length;
 
     if (this._isLiked) {
-      likeBtn.classList.add("card__like-button_active");
+      likeBtn.classList.add("card__icon-button_active");
     } else {
-      likeBtn.classList.remove("card__like-button_active");
+      likeBtn.classList.remove("card__icon-button_active");
     }
   }
 

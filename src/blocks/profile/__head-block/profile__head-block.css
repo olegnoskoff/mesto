@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .profile__name-block {
+  .profile__head-block {
     padding-left: 28px;
     gap: 10px;
   }

@@ -1,4 +1,4 @@
-.popup__field {
+.popup__block {
   display: flex;
   flex-direction: column;
   gap: 5px;

@@ -24,7 +24,7 @@
             <img
               src="#"
               alt="Фотография пользователя"
-              class="profile__avatar-image"
+              class="profile__avatar-img"
             />
             <button
               class="profile__avatar-button"
@@ -33,7 +33,7 @@
             ></button>
           </div>
           <div class="profile__info">
-            <div class="profile__name-block">
+            <div class="profile__head-block">
               <h1 class="profile__name"></h1>
               <button
                 type="button"
@@ -41,7 +41,7 @@
                 aria-label="Редактировать профиль"
               ></button>
             </div>
-            <p class="profile__job"></p>
+            <p class="profile__about"></p>
           </div>
           <button
             type="button"
@@ -55,20 +55,20 @@
           <template id="card">
             <div class="card">
               <img src="#" alt="#" class="card__image" />
-              <div class="card__description">
+              <div class="card__text">
                 <h2 class="card__title">#</h2>
                 <div class="card__like">
                   <button
                     type="button"
-                    class="card__like-button"
+                    class="card__icon"
                     aria-label="Добавить в избранное"
                   ></button>
-                  <span class="card__like-count"></span>
+                  <span class="card__like-number"></span>
                 </div>
               </div>
               <button
                 type="button"
-                class="card__delete-button"
+                class="card__delete"
                 aria-label="Удалить"
               ></button>
             </div>
@@ -131,7 +131,7 @@
         <div class="popup__container content__element">
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form" name="newCardPopupForm" novalidate>
-            <label class="popup__field">
+            <label class="popup__block">
               <input
                 type="text"
                 class="popup__input popup__input_type_title"
@@ -144,7 +144,7 @@
               />
               <span class="popup__input-error title-input-error"></span>
             </label>
-            <label class="popup__field">
+            <label class="popup__block">
               <input
                 type="url"
                 class="popup__input popup__input_type_link"
@@ -169,7 +169,7 @@
       <div class="popup popup_type_image">
         <figure class="popup__image-container">
           <img src="#" alt="#" class="popup__image" />
-          <figcaption class="popup__image-caption">#</figcaption>
+          <figcaption class="popup__image-name">#</figcaption>
           <button
             class="popup__button-close"
             type="button"
@@ -183,7 +183,7 @@
         <div class="popup__container content__element">
           <h2 class="popup__title">Обновить аватар</h2>
           <form class="popup__form" name="avatarChangePopupForm" novalidate>
-            <label class="popup__field">
+            <label class="popup__block">
               <input
                 type="url"
                 class="popup__input popup__input_type_link"

@@ -19,8 +19,8 @@ export const formSelector = {formSelector: profilePopupForm, inputSelector: inpu
 };
 
 const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__job');
-const profileAvatar = document.querySelector('.profile__avatar-image');
+const profileAbout = document.querySelector('.profile__about');
+const profileAvatar = document.querySelector('.profile__avatar-img');
 export const profileElement = {name: profileName, about: profileAbout, avatar: profileAvatar
 }
 
