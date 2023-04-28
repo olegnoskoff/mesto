@@ -44,13 +44,6 @@ function handleCardClick(imageLink, text) {
   imagePopup.open(imageLink, text);
 }
 
-//Обрабатывает нажатие на удаление карточки
-function handleDeleteCard(cardId) {
-  popupWithConfirmation.setTarget(cardId);
-  popupWithConfirmation.open();
-}
-
-
 //Обрабатывает нажатие на лайк в карточке
 function handleCardLike(cardId, isLiked) {
   cards[cardId].blockLikeButton();
@@ -66,6 +59,11 @@ function handleCardLike(cardId, isLiked) {
     });
 }
 
+//Обрабатывает нажатие на удаление карточки
+function handleDeleteCard(cardId) {
+  popupWithConfirmation.setTarget(cardId);
+  popupWithConfirmation.open();
+}
 //Выполняет сброс формы при открытии попапа с формой
 function handleFormOpen() {
   formsValidator[this.formName].hideErrors();
@@ -105,26 +103,6 @@ const profilePopupEdit = new PopupWithForm(
   handleFormOpen
 );
 
-const avatarFotoPopup = new PopupWithForm(
-  avatarPopupSelector,
-  (data) => {
-    avatarFotoPopup.blockSubmitButton();
-
-    api
-      .changeAvatar(data.link)
-      .then((res) => {
-        userInfo.fill(res);
-        userInfo.renderAvatar();
-        avatarFotoPopup.close();
-      })
-      .catch((err) => console.error(err))
-      .finally(() => {
-        avatarFotoPopup.unblockSubmitButton();
-      });
-  },
-  handleFormOpen
-);
-
 const newCardPopup = new PopupWithForm(
   cardAddPopup,
   (data) => {
@@ -159,6 +137,27 @@ const popupWithConfirmation = new PopupWithConfirmation(
   }
 );
 
+
+const avatarFotoPopup = new PopupWithForm(
+  avatarPopupSelector,
+  (data) => {
+    avatarFotoPopup.blockSubmitButton();
+
+    api
+      .changeAvatar(data.link)
+      .then((res) => {
+        userInfo.fill(res);
+        userInfo.renderAvatar();
+        avatarFotoPopup.close();
+      })
+      .catch((err) => console.error(err))
+      .finally(() => {
+        avatarFotoPopup.unblockSubmitButton();
+      });
+  },
+  handleFormOpen
+);
+
 //Первоначальное получение данных от сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then((results) => {
@@ -182,13 +181,6 @@ profileEditBtn.addEventListener("click", function () {
   profileAboutInput.dispatchEvent(new Event("input"));
 });
 
-//Попап обновления аватара
-avatarFotoPopup.setEventListeners();
-
-avatarButton.addEventListener("click", () => {
-  avatarFotoPopup.open();
-});
-
 //Попап добавления новой карточки
 newCardPopup.setEventListeners();
 
@@ -196,11 +188,18 @@ cardAddBtn.addEventListener("click", function () {
   newCardPopup.open();
 });
 
-//Попап с подтвержденим информации
-popupWithConfirmation.setEventListeners();
+//Попап обновления аватара
+avatarFotoPopup.setEventListeners();
+
+avatarButton.addEventListener("click", () => {
+  avatarFotoPopup.open();
+});
 
 //Попап с увеличенным изображением
 imagePopup.setEventListeners();
+
+//Попап с подтвержденим информации
+popupWithConfirmation.setEventListeners();
 
 //Валидация
 validatorForms(formSelector);
