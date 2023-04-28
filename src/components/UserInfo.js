@@ -1,25 +1,39 @@
 export default class UserInfo {
-  constructor(nameSelector, aboutSelector) {
-    this._nameElement = document.querySelector(nameSelector);
-
-    this._aboutElement = document.querySelector(aboutSelector);
+  constructor({nameElement, jobElement: aboutElement, avatarElement}) {
+    this._nameElement = nameElement;
+    this._aboutElement = aboutElement;
+    this._avatarElement = avatarElement;
   }
 
-  //возвращаем объект с двумя свойствами
+  //Сохраняем полученную информацию о пользователе
+  fill({name, about, avatar, cohort, _id}) {
+    this._name = name;
+    this._about = about;
+    this._avatar = avatar;
+    this._cohort = cohort;
+    this.id = _id;
+  }
 
+  //Возвращаем имя и инфу
   getUserInfo() {
     return {
-      name: this._nameElement.textContent,
-
-      about: this._aboutElement.textContent,
-    };
+      name: this._name,
+      about: this._about
+    }
   }
 
-  //устанавливаем текстовое содержимое в соответствии с переданными аргументами
+  //Имя пользователя
+  renderName() {
+    this._nameElement.textContent = this._name;
+  }
 
-  setUserInfo(name, about) {
-    this._nameElement.textContent = name;
+  //О пользователе
+  renderAbout() {
+    this._aboutElement.textContent = this._about;
+  }
 
-    this._aboutElement.textContent = about;
+  //Аватар пользователя
+  renderAvatar() {
+    this._avatarElement.src = this._avatar;
   }
 }

@@ -1,23 +1,19 @@
 export default class Section {
-  constructor(obj, selector) {
-    this._items = obj.items;
-
-    this._renderer = obj.renderer;
-
-    this._container = document.querySelector(selector); //определяем место на странице, ищем элемент в DOM дереве
+  constructor(renderer, containerSelector) {
+    this._renderer = renderer;
+    this._container = document.querySelector(containerSelector);
   }
 
-  //итерируется по каждому элементу в массиве
-
-  renderItems() {
-    this._items.forEach((item) => {
-      this.addItem(item);
+  //Создаеv и добавляеv элементы
+  renderItems(items) {
+    items.forEach((item) => {
+      const element = this._renderer(item);
+      this.addItem(element);
     });
   }
 
-  //создает HTML элемент, соответствующий переданному элементу массива
-
-  addItem(item) {
-    this._container.prepend(this._renderer(item)); //добавляем созданный элемент в начало
+  //Добвляем элемент на страницу
+  addItem(item, isInversed = false) {
+    isInversed ? this.container.prepend(item) : this.container.append(item);
   }
 }

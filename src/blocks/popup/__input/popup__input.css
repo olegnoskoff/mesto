@@ -1,16 +1,20 @@
 .popup__input {
-  background-color: transparent;
-  border: none;
+  border: 0; /* Сброс стандартного стиля */
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-bottom: 8px;
-  font-weight: 400;
+  padding-bottom: 13px;
+  /* Параметры шрифта внутри поля */
+  font-style: normal;
+  font-weight: normal;
   font-size: 14px;
-  line-height: 17px;
-  padding-left: 0;
+  line-height: 1.21;
+  color: #000000;
 }
 
-@media screen and (max-width: 530px) {
-  .popup__input {
-    max-width: 238px;
-  }
+.popup__input::placeholder {
+  color: #c4c4c4;
+  font-weight: 400;
+}
+
+.popup__input:focus {
+  outline-offset: 3px;
 }
