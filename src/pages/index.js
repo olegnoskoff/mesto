@@ -1,3 +1,4 @@
+import "../pages/index.css";
 import {apiConfig} from '../utils/apiConfig.js';
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
@@ -7,7 +8,6 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
-import "./index.css";
 
 import {
   cardsSelector, cardTemplateSelector, formSelector, profileElement,
