@@ -13,7 +13,9 @@ const submitBtnSelector = '.popup__save-button';
 const inactBtnClass = 'popup__save-button_disabled';
 const inputErrClass = 'popup__input_type_error';
 const errorClass = 'popup__input-error_visible';
-export const formSelector = {formSelector: profilePopupForm, inputSelector: inputName, submitButtonSelector: submitBtnSelector, inactiveButtonClass: inactBtnClass, inputErrorClass: inputErrClass, errorClass
+export const formSelector = {formSelector: profilePopupForm, inputSelector: inputName, 
+  submitButtonSelector: submitBtnSelector, inactiveButtonClass: inactBtnClass, 
+  inputErrorClass: inputErrClass, errorClass
 };
 
 const profileName = document.querySelector('.profile__name');
