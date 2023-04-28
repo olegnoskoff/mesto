@@ -17,7 +17,7 @@ export default class Api {
       });
     });
   }
-
+  
   setUserInfo({ name, job }) {
     const url = `${this._baseUrl}/users/me`;
 
