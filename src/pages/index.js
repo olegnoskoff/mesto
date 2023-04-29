@@ -192,8 +192,8 @@ profileEditBtn.addEventListener("click", function () {
   ({ name: profileNameInput.value, about: profileAboutInput.value } =
     userInfo.getUserInfo());
   profilePopupEdit.open();
-  profileNameInput.dispatchEvent(new Event("input"));
-  profileAboutInput.dispatchEvent(new Event("input"));
+  // profileNameInput.dispatchEvent(new Event("input"));
+  // profileAboutInput.dispatchEvent(new Event("input"));
 });
 
 // profileEditBtn.addEventListener('click', () => {
