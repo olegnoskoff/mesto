@@ -1,53 +1,26 @@
-.popup__button-close { 
+.popup__button-close {
+  background-image: url("../../../images/close_icon.svg");
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  background-size: contain;
+  border: 0;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
 
-  background-image: url("../../../images/close_icon.svg"); 
+.popup__button-close:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
 
-  background-repeat: no-repeat; 
-
-  width: 32px; 
-
-  height: 32px; 
-
-  background-color: transparent; 
-
-  background-size: contain; 
-
-  border: 0; 
-
-  position: absolute; 
-
-  top: -40px; 
-
-  right: -40px; 
-
-} 
-
- 
-
-.popup__button-close:hover { 
-
-  opacity: 0.6; 
-
-  cursor: pointer; 
-
-} 
-
- 
-
-@media screen and (max-width: 530px) { 
-
-  .popup__button-close { 
-
-    width: 20px; 
-
-    height: 20px; 
-
-    right: 0; 
-
-    top: -36px; 
-
-  } 
-
-} 
-
- 
+@media screen and (max-width: 530px) {
+  .popup__button-close {
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: -36px;
+  }
+}
