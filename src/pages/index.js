@@ -168,7 +168,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
     cardsSection.renderItems(results[1]);
   })
-  .catch((err) => console.error(err));
+  // .catch((err) => console.error(err));
 
 //Установка слушателей для работы попапов
 profilePopupEdit.setEventListeners();
@@ -180,6 +180,15 @@ profileEditBtn.addEventListener("click", function () {
   profileNameInput.dispatchEvent(new Event("input"));
   profileAboutInput.dispatchEvent(new Event("input"));
 });
+
+// profileEditBtn.addEventListener('click', () => {
+//   const userInfoData = userInfo.getUserInfo();
+//   const profileForm = profilePopupEdit.getFormElement();
+//   profileForm.elements.name.value = userInfoData.userName;
+//   profileForm.elements.about.value = userInfoData.userDescription;
+//   formValidElements.resetValidation();
+//   profilePopupEdit.open();
+// });
 
 //Попап добавления новой карточки
 newCardPopup.setEventListeners();
