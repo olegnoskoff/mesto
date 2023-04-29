@@ -1,5 +1,5 @@
-import '../pages/index.css';
-import {apiConfig} from '../utils/apiConfig.js';
+import "../pages/index.css";
+import { apiConfig } from "../utils/apiConfig.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -10,13 +10,24 @@ import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 
 import {
-  cardsSelector, cardTemplateSelector, formSelector, profileElement,
-  profileEditBtn, profileNameInput, profileAboutInput, profilePopupSelector,
-  avatarButton, avatarPopupSelector, cardAddBtn, cardAddPopup, cardPopupImg, deletPopupSelector,
+  cardsSelector,
+  cardTemplateSelector,
+  formSelector,
+  profileElement,
+  profileEditBtn,
+  profileNameInput,
+  profileAboutInput,
+  profilePopupSelector,
+  avatarButton,
+  avatarPopupSelector,
+  cardAddBtn,
+  cardAddPopup,
+  cardPopupImg,
+  deletPopupSelector,
 } from "../utils/constants.js";
 
 const formsValidator = {};
-const cards = {}; 
+const cards = {};
 
 //Запускает валидацию всех форм на странице
 function validatorForms(formSelectors) {
@@ -33,7 +44,14 @@ function validatorForms(formSelectors) {
 //Создает элемент карточки
 function newCard(data) {
   const card = new Card(
-    data,cardTemplateSelector, handleCardClick, handleDeleteCard, handleCardLike, userInfo.id
+    data,
+    cardTemplateSelector,
+    handleCardClick,
+    handleDeleteCard,
+    handleCardLike,
+    userInfo.id,
+    this._element.querySelector(".card__like-number"),
+    this._element.querySelector(".card__icon"),
   );
   cards[data._id] = card;
   return card.generateCard();
@@ -137,20 +155,25 @@ const popupWithConfirmation = new PopupWithConfirmation(
   }
 );
 
-const avatarFotoPopup = new PopupWithForm(avatarPopupSelector, data => {
-  avatarFotoPopup.blockSubmitButton();
+const avatarFotoPopup = new PopupWithForm(
+  avatarPopupSelector,
+  (data) => {
+    avatarFotoPopup.blockSubmitButton();
 
-  api.changeAvatar(data.link)
-    .then((res) => {
-      userInfo.fill(res);
-      userInfo.renderAvatar();
-      avatarFotoPopup.close();
-    })
-    .catch(err => console.error(err))
-    .finally(() => {
-      avatarFotoPopup.unblockSubmitButton();
-    });
-}, handleFormOpen);
+    api
+      .changeAvatar(data.link)
+      .then((res) => {
+        userInfo.fill(res);
+        userInfo.renderAvatar();
+        avatarFotoPopup.close();
+      })
+      .catch((err) => console.error(err))
+      .finally(() => {
+        avatarFotoPopup.unblockSubmitButton();
+      });
+  },
+  handleFormOpen
+);
 
 //Первоначальное получение данных от сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
