@@ -196,15 +196,6 @@ profileEditBtn.addEventListener("click", function () {
   // profileAboutInput.dispatchEvent(new Event("input"));
 });
 
-// profileEditBtn.addEventListener('click', () => {
-//   const userInfoData = userInfo.getUserInfo();
-//   const profileForm = profilePopupEdit.getFormElement();
-//   profileForm.elements.name.value = userInfoData.userName;
-//   profileForm.elements.about.value = userInfoData.userDescription;
-//   formValidElements.resetValidation();
-//   profilePopupEdit.open();
-// });
-
 //Попап добавления новой карточки
 newCardPopup.setEventListeners();
 
