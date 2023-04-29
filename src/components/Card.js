@@ -15,8 +15,6 @@ export default class Card {
     this._id = _id;
     this._userId = userId;
     this._isLiked = this._checkIsLiked();
-    this._likeNumber = likeNumber;
-    this._likeBtn = likeBtn;
 
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
@@ -37,7 +35,7 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector(".card__icon");
-    this._likeNumber = this._element.querySelector(".card__like-number"),
+    this._likeNumber = this._element.querySelector(".card__like-number");
     this._likeBtn = this._element.querySelector(".card__icon");
     //Заполнение содержимого карточки
     const img = this._element.querySelector(".card__image");
