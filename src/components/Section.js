@@ -14,6 +14,10 @@ export default class Section {
 
   //Добвляем элемент на страницу
   addItem(item, isInversed = false) {
-    isInversed ? this.container.prepend(item) : this.container.append(item);
+    if (isInversed) {
+      this._container.prepend(item);
+    } else {
+      this._container.append(item);
+    }
   }
 }

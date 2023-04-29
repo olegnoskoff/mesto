@@ -1,4 +1,4 @@
-import './index.css';
+import '../pages/index.css';
 import {apiConfig} from '../utils/apiConfig.js';
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
@@ -168,7 +168,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
     cardsSection.renderItems(results[1]);
   })
-  // .catch((err) => console.error(err));
+  .catch((err) => console.error(err));
 
 //Установка слушателей для работы попапов
 profilePopupEdit.setEventListeners();
