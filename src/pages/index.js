@@ -49,9 +49,7 @@ function newCard(data) {
     handleCardClick,
     handleDeleteCard,
     handleCardLike,
-    userInfo.id,
-    this._element.querySelector(".card__like-number"),
-    this._element.querySelector(".card__icon"),
+    userInfo.id
   );
   cards[data._id] = card;
   return card.generateCard();

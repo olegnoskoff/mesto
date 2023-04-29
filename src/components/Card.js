@@ -6,8 +6,6 @@ export default class Card {
     handleDeleteCard,
     handleLikeCard,
     userId,
-    likeNumber,
-    likeBtn,
   ) {
     this._name = name;
     this._link = link;
@@ -39,7 +37,8 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector(".card__icon");
-
+    this._likeNumber = this._element.querySelector(".card__like-number"),
+    this._likeBtn = this._element.querySelector(".card__icon");
     //Заполнение содержимого карточки
     const img = this._element.querySelector(".card__image");
     img.src = this._link;
