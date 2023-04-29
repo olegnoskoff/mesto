@@ -1,9 +1,9 @@
 .card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border-radius: 10px;
-  position: relative;
-  max-width: 282px;
-  width: 100%;
+  transition: transform 0.2s;
 }
