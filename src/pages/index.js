@@ -144,7 +144,7 @@ const avatarFotoPopup = new PopupWithForm(
     avatarFotoPopup.blockSubmitButton();
 
     api
-      .changeAvatar(data.link)
+      .updateProfileAvatar(data.link)
       .then((res) => {
         userInfo.fill(res);
         userInfo.renderAvatar();
