@@ -150,9 +150,7 @@ const avatarFotoPopup = new PopupWithForm(
         userInfo.renderAvatar();
         avatarFotoPopup.close();
       })
-      // .catch((err) => console.error(err))
-            .catch((err) => console.log(err))
-
+      .catch((err) => console.error(err))
       .finally(() => {
         avatarFotoPopup.unblockSubmitButton();
       });

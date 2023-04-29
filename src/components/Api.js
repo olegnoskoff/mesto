@@ -74,10 +74,14 @@ export default class Api {
 
   updateProfileAvatar(body) {
     const requestUrl = this._baseUrl + `/users/me/avatar`;
-    return fetch(requestUrl, {
-      method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify(body),
-    }).then(this._checkResponse);
+    console.log(body);
+    console.log(requestUrl);
+    console.log(this._headers);
+
+    // return fetch(requestUrl, {
+    //   method: 'PATCH',
+    //   headers: this._headers,
+    //   body: JSON.stringify(body),
+    // }).then(this._checkResponse);
   }
 }
