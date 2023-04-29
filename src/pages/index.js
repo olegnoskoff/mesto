@@ -150,7 +150,7 @@ const avatarFotoPopup = new PopupWithForm(avatarPopupSelector, data => {
     .finally(() => {
       avatarFotoPopup.unblockSubmitButton();
     });
-}, handleOpenForm);
+}, handleFormOpen);
 
 //Первоначальное получение данных от сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
