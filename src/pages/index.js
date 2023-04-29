@@ -46,7 +46,7 @@ function handleCardClick(imageLink, text) {
 
 //Обрабатывает нажатие на лайк в карточке
 function handleCardLike(cardId, isLiked) {
-  cards[cardId].blockLikeButton();
+  cards[cardId].blockLikeBtn();
 
   api
     .toggleLike(cardId, isLiked)
@@ -55,7 +55,7 @@ function handleCardLike(cardId, isLiked) {
     })
     .catch((err) => console.error(err))
     .finally(() => {
-      cards[cardId].unblockLikeButton();
+      cards[cardId].unblockLikeBtn();
     });
 }
 
