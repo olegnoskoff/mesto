@@ -137,26 +137,20 @@ const popupWithConfirmation = new PopupWithConfirmation(
   }
 );
 
+const avatarFotoPopup = new PopupWithForm(avatarPopupSelector, data => {
+  avatarFotoPopup.blockSubmitButton();
 
-const avatarFotoPopup = new PopupWithForm(
-  avatarPopupSelector,
-  (data) => {
-    avatarFotoPopup.blockSubmitButton();
-
-    api
-      .updateProfileAvatar(data.link)
-      .then((res) => {
-        userInfo.fill(res);
-        userInfo.renderAvatar();
-        avatarFotoPopup.close();
-      })
-      .catch((err) => console.error(err))
-      .finally(() => {
-        avatarFotoPopup.unblockSubmitButton();
-      });
-  },
-  handleFormOpen
-);
+  api.changeAvatar(data.link)
+    .then((res) => {
+      userInfo.fill(res);
+      userInfo.renderAvatar();
+      avatarFotoPopup.close();
+    })
+    .catch(err => console.error(err))
+    .finally(() => {
+      avatarFotoPopup.unblockSubmitButton();
+    });
+}, handleOpenForm);
 
 //Первоначальное получение данных от сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
