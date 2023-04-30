@@ -1,12 +1,12 @@
 export default class UserInfo {
-  constructor({nameElement, aboutElement, avatarElement}) {
+  constructor({ nameElement, aboutElement, avatarElement }) {
     this._nameElement = nameElement;
     this._aboutElement = aboutElement;
     this._avatarElement = avatarElement;
   }
 
   //Сохраняем полученную информацию о пользователе
-  fill({name, about, avatar, cohort, _id}) {
+  fill({ name, about, avatar, cohort, _id }) {
     this._name = name;
     this._about = about;
     this._avatar = avatar;
@@ -18,8 +18,8 @@ export default class UserInfo {
   getUserInfo() {
     return {
       name: this._name,
-      about: this._about
-    }
+      about: this._about,
+    };
   }
 
   //Имя пользователя

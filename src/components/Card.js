@@ -5,7 +5,7 @@ export default class Card {
     handleCardClick,
     handleDeleteCard,
     handleLikeCard,
-    userId,
+    userId
   ) {
     this._name = name;
     this._link = link;
